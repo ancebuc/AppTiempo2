@@ -18,7 +18,7 @@ namespace AppTiempo2.Controllers
         public IActionResult Index()
         {
             Current currentWeather = new Current("4a1d40cc5c1c8b127cb5e2427dd5efda");
-            WeatherDayInfo data = currentWeather.GetWeatherDataByCityName("Logroño").Result.WeatherDayInfo;
+            WeatherDayInfo data = currentWeather.GetWeatherDataByCoordinates(42.343926, -3.696977).Result.WeatherDayInfo;
             ViewData["Latitud"] = currentWeather.GetWeatherDataByCityName("Logroño").Result.Coordinates.Latitude.ToString();
             ViewData["Longitud"] = currentWeather.GetWeatherDataByCityName("Logroño").Result.Coordinates.Longitude.ToString();
             ViewData["TemperaturaMaxima"] = data.MaximumTemperature.ToString();
