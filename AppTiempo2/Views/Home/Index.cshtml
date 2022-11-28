@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>El tiempo de hoy es:</p>
+    <p>Temperatura: @ViewData.GetViewDataInfo("TemperaturaActual").Value</p>
+    <p>Temperatura máxima: @ViewData.GetViewDataInfo("TemperaturaMaxima").Value</p>
+    <p>Temperatura mínima: @ViewData.GetViewDataInfo("TemperaturaMinima").Value</p>
+    <p>Coordenadas: @ViewData.GetViewDataInfo("Latitud").Value, @ViewData.GetViewDataInfo("Longitud").Value</p>
+    <form id="form" runat="server">
+        <input type="text"></input>
+    </form>
+</div>
