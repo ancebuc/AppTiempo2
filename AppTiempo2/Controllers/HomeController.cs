@@ -15,16 +15,40 @@ namespace AppTiempo2.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        //GET : /
+        public async Task<IActionResult> Index(string id)
         {
             Current currentWeather = new Current("4a1d40cc5c1c8b127cb5e2427dd5efda");
-            WeatherDayInfo data = currentWeather.GetWeatherDataByCoordinates(42.343926, -3.696977).Result.WeatherDayInfo;
-            ViewData["Latitud"] = currentWeather.GetWeatherDataByCityName("Logroño").Result.Coordinates.Latitude.ToString();
-            ViewData["Longitud"] = currentWeather.GetWeatherDataByCityName("Logroño").Result.Coordinates.Longitude.ToString();
-            ViewData["TemperaturaMaxima"] = data.MaximumTemperature.ToString();
-            ViewData["TemperaturaMinima"] = data.MinimumTemperature.ToString();
-            ViewData["TemperaturaActual"] = data.Temperature;
-            return View();
+            float data = 0;
+            if (!string.IsNullOrEmpty(id)) 
+            {
+                data = currentWeather.GetWeatherDataByCityName(id).Result.WeatherDayInfo.Temperature;
+            }
+            
+            //ViewData["Latitud"] = currentWeather.GetWeatherDataByCityName("Logroño").Result.Coordinates.Latitude.ToString();
+            //ViewData["Longitud"] = currentWeather.GetWeatherDataByCityName("Logroño").Result.Coordinates.Longitude.ToString();
+            //ViewData["TemperaturaMaxima"] = data.MaximumTemperature.ToString();
+            //ViewData["TemperaturaMinima"] = data.MinimumTemperature.ToString();
+            //ViewData["TemperaturaActual"] = data.Temperature;
+            return View(data);
+        }
+
+        //GET: /TemperaturaHoy
+        public IActionResult TemperaturaHoy(string ciudad) 
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(ciudad)) 
+                {
+                    
+                }
+            }
+            catch (Exception) 
+            {
+            
+            }
+            Console.WriteLine();
+            return null;
         }
 
         public IActionResult Privacy()
