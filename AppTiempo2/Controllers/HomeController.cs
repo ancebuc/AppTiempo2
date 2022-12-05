@@ -36,6 +36,7 @@ namespace AppTiempo2.Controllers
         //GET: /TemperaturaHoy
         public IActionResult TemperaturaHoy(string ciudad) 
         {
+
             try
             {
                 if (!string.IsNullOrEmpty(ciudad)) 
